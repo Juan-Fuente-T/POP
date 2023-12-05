@@ -3,6 +3,7 @@ import Web3 from 'web3';
 
 const WalletAddress = () => {
   const [walletAddress, setWalletAddress] = useState(null);
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   const connectMetaMask = () => {
       if (window.ethereum) {
@@ -12,6 +13,7 @@ const WalletAddress = () => {
         .then((accounts) => {
           const address = accounts[0];
           setWalletAddress(address);
+          setButtonClicked(true);
         })
         .catch((error) => {
           console.error("Error al habilitar MetaMask:", error);
@@ -28,7 +30,9 @@ const WalletAddress = () => {
       ) : (
         <div>
           <p>Connect Your Wallet </p>
-          <button onClick={connectMetaMask}>Conect MetaMask</button>
+          <button onClick={connectMetaMask} style={{color:'white', width:130, padding:10, borderRadius: 10,backgroundColor: buttonClicked ? 'green' : 'blue'}}>
+          {buttonClicked ? 'Connected' : 'Connect'}
+          </button>
         </div>
       )}
     </div>

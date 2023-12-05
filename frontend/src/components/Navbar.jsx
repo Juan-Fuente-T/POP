@@ -37,6 +37,7 @@ const Navbar = () => {
             
           </a>
       </div>
+      
       <div>
       
         <button style={buttonStyle}><BottonConnect /> </button>
